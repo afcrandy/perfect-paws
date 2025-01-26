@@ -1,1 +1,1 @@
-web: gunicorn codestar.wsgi
+web: gunicorn perfect_paws.wsgi
