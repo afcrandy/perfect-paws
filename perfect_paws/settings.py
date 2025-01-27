@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 
 # if in development, import environment variables
@@ -39,6 +40,9 @@ ALLOWED_HOSTS = [
     '.herokuapp.com',
 ]
 
+# tell Django to use my custom User model
+AUTH_USER_MODEL = "users.User"
+
 
 # Application definition
 
@@ -50,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -87,11 +92,13 @@ WSGI_APPLICATION = 'perfect_paws.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net/",
+    "https://*.herokuapp.com"
+]
 
 
 # Password validation
