@@ -38,6 +38,7 @@ else:
 ALLOWED_HOSTS = [
     '8000-afcrandy-perfectpaws-u5ild2ea13j.ws.codeinstitute-ide.net', 
     '.herokuapp.com',
+    '127.0.0.1',
 ]
 
 # tell Django to use my custom User model
@@ -106,7 +107,8 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
+    "https://localhost",
 ]
 
 
