@@ -1,0 +1,16 @@
+/* Set variables */
+:root {
+    --lavender-pink: #EDA6CE;
+    --mimi-pink: #FEDBF0;
+    --prussian-blue: #0E273F;
+}
+
+/* Global */
+body {
+    color: var(--prussian-blue) !important;
+}
+
+/* Navbar styles */
+nav.navbar {
+    background-color: rgba(255, 255, 255, 0.4);
+}

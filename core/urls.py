@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.perfect_paws_home, name='home'),
+    path('', views.home, name='home'),
 ]
