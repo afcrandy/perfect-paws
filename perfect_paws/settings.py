@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'core',
     'users',
+    'enquiries',
 ]
 
 SITE_ID = 1
@@ -145,6 +146,9 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 # turn off email verification for now
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# Google Maps API Key
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 
 # Internationalization

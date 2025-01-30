@@ -13,8 +13,19 @@ body {
 main {
     padding-bottom: 60px;
 
-    & .row:first-child {
+    & > .row:first-child {
+        padding-top: 60px;
         background-color: var(--mimi-pink);
+    }
+}
+
+.page-title {
+    padding-top: 60px;
+    background-color: var(--mimi-pink);
+    
+    & h1 {
+        padding: 40px 0;
+        text-align: center;
     }
 }
 
@@ -40,4 +51,25 @@ nav.navbar {
         background-color: var(--prussian-blue);
         border-color: var(--prussian-blue);
     }
+}
+
+
+/* Contact page */
+.contact-icon {
+    padding: 15px 10px 10px;
+    font-size: larger;
+}
+.contact-info {
+    padding: 10px;
+}
+.contact-type {
+    font-size: larger;
+    font-weight: bolder;
+}
+.contact-note {
+    padding: 5px;
+}
+#map {
+    height: 400px; /* The height is 400 pixels */
+    width: 100%; /* The width is the width of the web page */
 }
