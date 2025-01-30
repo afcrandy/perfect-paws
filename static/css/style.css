@@ -10,7 +10,34 @@ body {
     color: var(--prussian-blue) !important;
 }
 
+main {
+    padding-bottom: 60px;
+
+    & .row:first-child {
+        background-color: var(--mimi-pink);
+    }
+}
+
 /* Navbar styles */
 nav.navbar {
     background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Home page */
+#hero-text {
+    /* background-color: var(--mimi-pink); */
+    padding: 80px 20px 20px;
+}
+#hero-image {
+    background: var(--lavender-pink) url('../images/hero_image.jpeg') center/cover no-repeat;
+    height: 500px;
+}
+
+.calls-to-action {
+    margin: 30px 0;
+    
+    & .btn {
+        background-color: var(--prussian-blue);
+        border-color: var(--prussian-blue);
+    }
 }
