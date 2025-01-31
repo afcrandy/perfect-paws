@@ -10,7 +10,7 @@ class Enquiry(models.Model):
     enquirer_email = models.EmailField('email')
     enquirer_phone = models.CharField('phone', max_length=20)
     content = models.TextField('enquiry')
-    read = models.BooleanField()
+    read = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

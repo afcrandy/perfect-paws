@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block pagetitle %}
     Contact Us
@@ -18,7 +19,7 @@
             <div class="col-xl-8 offset-xl-2">
 
                 <div class="row">
-                    <div class="col-md-6 offset-md-0 col-sm-10 offset-sm-1 p-4 contact-info-box d-flex flex-column px-5">
+                    <div class="col-md-6 offset-md-0 col-sm-10 offset-sm-1 py-4 contact-info-box d-flex flex-column px-5">
                         <div class="contact-info-section d-flex flex-row">
                             <div class="contact-icon">
                                 <i class="bi bi-pin-map"></i>
@@ -28,9 +29,9 @@
                                     Address
                                 </div>
                                 <p class="contact-data">
-                                    17 Main Street <br>
-                                    Balerno <br>
-                                    EH14 7EQ
+                                    6A Montagu Terrace <br>
+                                    Edinburgh <br>
+                                    EH3 5QX
                                 </p>
                             </div>
                         </div>
@@ -65,13 +66,22 @@
                             Please use our booking or enquiry form or leave us a voice mail.
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <p>Contact Form</p>
+                    <div class="col-md-6 p-4">
+                        <div class="form-container mimi-pink-bg p-3 pb-1">
+                            <h4 class="mb-3">Send a message</h4>
+                            <form id="enquiry-form" method="post">
+                                {{ enquiry_form | crispy }}
+                                {% csrf_token %}
+                                <button id="submit-button" type="submit" class="btn btn-signup btn-lg ms-5">Send</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
         
-                <div class="row">
-                    <div id="map"></div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div id="map"></div>
+                    </div>
                 </div>
                 
             </div>

@@ -29,6 +29,11 @@ main {
     }
 }
 
+/* Colours */
+.mimi-pink-bg {
+    background-color: var(--mimi-pink) !important;
+}
+
 /* Navbar styles */
 nav.navbar {
     background-color: rgba(255, 255, 255, 0.4);
@@ -68,6 +73,10 @@ nav.navbar {
 }
 .contact-note {
     padding: 5px;
+}
+#submit-button {
+    color: white;
+    background-color: var(--prussian-blue);
 }
 #map {
     height: 400px; /* The height is 400 pixels */
