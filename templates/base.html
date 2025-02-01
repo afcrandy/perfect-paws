@@ -5,6 +5,10 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+{% url 'contact' as contact_url %}
+{% url 'services_info' as services_url %}
+{% url 'booking_form' as booking_url %}
+
 
 <html class="h-100" lang="en">
 <head>
@@ -42,13 +46,13 @@
                         <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}" href="{% url 'home'%}">Home</a>
                     </li>
                     <li class="nav-item me-4">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link {% if request.path == services_url %}active" aria-current="page{% endif %}" href="{% url 'services_info' %}">Services</a>
                     </li>
                     <li class="nav-item me-4">
-                        <a class="nav-link" href="#">Book now</a>
+                        <a class="nav-link {% if request.path == booking_url %}active" aria-current="page{% endif %}" href="{% url 'booking_form' %}">Book now</a>
                     </li>
                     <li class="nav-item me-4">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
+                        <a class="nav-link {% if request.path == contact_url %}active" aria-current="page{% endif %}" href="{% url 'contact' %}">Contact us</a>
                     </li>
 
                     {% if user.is_authenticated and user.is_superuser %}
