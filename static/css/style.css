@@ -96,3 +96,13 @@ nav.navbar {
     height: 400px; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
 }
+
+
+/* Services page */
+.service-description.mb-0 p {
+    margin-bottom: 0;
+}
+.service-container img {
+    height: 200px;
+    width: 200px;
+}
