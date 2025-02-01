@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render
+from django.contrib import messages
 from .forms import EnquiryForm
 
 
@@ -9,6 +10,9 @@ def contact_page(request):
         enquiry_form = EnquiryForm(data=request.POST)
         if enquiry_form.is_valid():
             enquiry = enquiry_form.save()
+            messages.add_message(
+                request, messages.SUCCESS, "Your enquiry has been successfully sent"
+            )
     
     enquiry_form = EnquiryForm()
     

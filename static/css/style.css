@@ -19,6 +19,13 @@ main {
     }
 }
 
+.toast-container {
+    top: 70px !important;
+}
+.toast {
+    width: 400px;
+}
+
 .page-title {
     padding-top: 60px;
     background-color: var(--mimi-pink);
@@ -32,6 +39,13 @@ main {
 /* Colours */
 .mimi-pink-bg {
     background-color: var(--mimi-pink) !important;
+}
+.toast-success {
+    background-color: #e6ffcc;
+    /* background-color: #d9ffb3; */
+}
+.toast-danger {
+    background-color: #ffb3b3;
 }
 
 /* Navbar styles */
