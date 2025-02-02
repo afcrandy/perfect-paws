@@ -34,11 +34,18 @@ main {
         padding: 40px 0;
         text-align: center;
     }
+    & p {
+        text-align: center;
+        margin-bottom: 25px;
+    }
 }
 
 /* Colours */
 .mimi-pink-bg {
     background-color: var(--mimi-pink) !important;
+}
+.prussian-blue-bg {
+    background-color: var(--prussian-blue);
 }
 .toast-success {
     background-color: #e6ffcc;
@@ -105,4 +112,10 @@ nav.navbar {
 .service-container img {
     height: 200px;
     width: 200px;
+}
+
+
+/* Auth pages */
+.btn.btn-signup {
+    border-color: var(--prussian-blue);
 }
