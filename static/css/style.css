@@ -1,3 +1,9 @@
+/* Add brand font */
+@font-face {
+    font-family: 'Dogma Script';
+    src: url('../fonts/dogma_script.otf');
+}
+
 /* Set variables */
 :root {
     --lavender-pink: #EDA6CE;
@@ -8,7 +14,12 @@
 /* Global */
 body {
     color: var(--prussian-blue) !important;
+    font-family: 'Lato', sans-serif;
 }
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
 
 main {
     padding-bottom: 60px;
@@ -62,12 +73,19 @@ nav.navbar {
 
 /* Home page */
 #hero-text {
-    /* background-color: var(--mimi-pink); */
-    padding: 80px 20px 20px;
+    padding: 20px 20px;
 }
 #hero-image {
-    background: var(--lavender-pink) url('../images/hero_image.jpeg') center/cover no-repeat;
+    background: var(--lavender-pink) url('../images/hero_image.png') center/cover no-repeat;
     height: 500px;
+}
+.brand-name {
+    font-family: 'Dogma Script', serif;
+    font-size: 100px;
+
+    @media screen and (max-width: 578px) {
+        font-size: 65px;
+    }
 }
 
 .calls-to-action {

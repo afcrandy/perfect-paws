@@ -15,8 +15,8 @@ class EnquiryForm(forms.ModelForm):
             'content': 'Message'
         }
         widgets = {
-            'enquirer_name': forms.TextInput(attrs={'placeholder': 'e.g. Bilbo Baggins'}),
-            'enquirer_email': forms.EmailInput(attrs={'placeholder': 'e.g. bilbo.baggins@email.com'}),
+            'enquirer_name': forms.TextInput(attrs={'placeholder': 'Bilbo Baggins'}),
+            'enquirer_email': forms.EmailInput(attrs={'placeholder': 'bilbo.baggins@email.com'}),
             'enquirer_phone': forms.TextInput(attrs={'placeholder': '07123 456 789'}),
             'content': forms.Textarea(attrs={'placeholder': """Hi,
 

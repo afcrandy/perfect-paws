@@ -10,7 +10,9 @@
     <div class="container-fluid">
         <div class="row page-title">
             <div id="hero-text" class="col-12 col-md-6 text-center d-flex flex-column justify-content-center">
-                <h1>Perfect Paws |logo|</h1>
+                <h1 class="brand-name">
+                    Perfect Paws <img src="{% static "images/logo_home_lg.png" %}" alt="Perfect Paws Logo">
+                </h1>
                 <h4>Dog Grooming Salon</h4>
                 <div class="calls-to-action d-flex flex-row justify-content-evenly px-5">
                     <a class="btn btn-lg text-nowrap btn-primary" href="{% url 'booking_form' %}">
@@ -29,10 +31,12 @@
         <div class="row pt-4">
             <div class="col-md-8 offset-md-2 text-center">
                 <h3>Welcome to Perfect Paws!</h3>
-                <p>Our salon offers a complete range of dog grooming services using the best all natural vegan products
-                    from nail clipping to full dog grooms and hand stripping. Be assured highest standard of work will
-                    be carried as Perfect Paws has been established in Edinburgh since 1953 our experience in his time
-                    is immense, having dealt with a range of breeds and temperaments.
+                <p>
+                    Our salon offers a wide range of grooming services so your dog can feel their best!
+                    We use safe, all-natural vegan products in all of our treatments, which leave your
+                    dog feeling healthy and pampered. We are a family-owned dog grooming salon which has
+                    been serving our community in north Edinburgh since 1985, and our groomers are
+                    experienced in working with dogs of all sizes and breeds.
                 </p>
             </div>
         </div>
