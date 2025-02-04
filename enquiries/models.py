@@ -4,7 +4,19 @@ from django.db import models
 # Create your models here.
 class Enquiry(models.Model):
     """
-    Stores a single enquiry from a site visitor
+    Models a single enquiry submitted by a site visitor.
+    
+    **Attributes:**
+        enquirer_name (str): The name of the person making the enquiry.
+        enquirer_email (str): The email of the person making the enquiry.
+        enquirer_phone (str): The phone number of the enquirer.
+        content (str): The content of the enquiry or question.
+        read (bool): Whether the enquiry has been read by the site owner.
+        created_on (datetime): Timestamp for when the enquiry was created.
+    
+    **Meta:**
+        ordering: Orders enquiries by creation date in descending order.
+        verbose_name_plural: Specifies the plural form of the model name.
     """
     enquirer_name = models.CharField('name', max_length=200)
     enquirer_email = models.EmailField('email')

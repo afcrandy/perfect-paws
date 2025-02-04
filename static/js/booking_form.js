@@ -10,7 +10,6 @@ while ([0, 1].includes(tomorrow.getDay())) {
 
 // given a length-type of booking update the time picker to the base slots available
 function reset_time_picker(length, showTimepicker = true, taken_slots = null) {
-    console.log(taken_slots);
     // remove selected value from timepicker and BookingForm time field
     $('#timepicker').val('');
     $('#id_time').val('');
@@ -25,7 +24,7 @@ function reset_time_picker(length, showTimepicker = true, taken_slots = null) {
     // create the array of available slots
     let available_slots = [...(length == 'long' ? long_slots : short_slots)];
     if (taken_slots) {
-        available_slots = available_slots.filter((v) => { return !taken_slots.includes(v) })
+        available_slots = available_slots.filter((v) => { return !taken_slots.includes(v); });
     }
 
     // iterate through the slots and hide any that are unavailable for this type or are taken
@@ -43,13 +42,12 @@ $(function() {
         dateFormat: 'yy-mm-dd',
         minDate: tomorrow,
         beforeShowDay: function(date) {
-            if ([0, 1].includes(date.getDay())) { return [false] }
+            if ([0, 1].includes(date.getDay())) { return [false]; }
             let string = jQuery.datepicker.formatDate('yy-mm-dd', date);
-            return [unavailable_dates.indexOf(string) == -1]
+            return [unavailable_dates.indexOf(string) == -1];
         },
         // date selector event listener
         onSelect: function(dateText) {
-            console.log(dateText);
             let serviceLength = $('.service-selector.selected').data('serviceLength');
             // refresh the timepicker, show it and update the available slots
             reset_time_picker(serviceLength, true, slots_taken[dateText]);
@@ -82,9 +80,6 @@ $(function() {
     $('#service-form .service-selector').on('click', (e) => {
         // only if not the currently selected service
         if (!$(e.currentTarget).hasClass('selected')) {
-            // store the previous service length
-            let previousLength = $('.service-selector.selected').data('serviceLength') ?? '';
-            
             // remove selected class from all services and add to target
             $('#service-form .service-selector').removeClass('selected');
             $(e.currentTarget).addClass('selected');
@@ -97,7 +92,7 @@ $(function() {
             // get the service length data and prepare formData for AJAX call
             const formData = {
                 slot: $(e.currentTarget).data('serviceLength'),
-            }
+            };
             // get the url to hit for this AJAX call
             const url = $('#service-form').attr('action');
             
@@ -113,7 +108,6 @@ $(function() {
                 },
                 success: (data) => {
                     // pump returned data into the availability data variables
-                    console.log(data);
                     unavailable_dates = data['unavailable_days'];
                     slots_taken = data['used_slots'];
                 },

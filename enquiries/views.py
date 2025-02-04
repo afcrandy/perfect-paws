@@ -6,6 +6,19 @@ from .forms import EnquiryForm
 
 # Create your views here.
 def contact_page(request):
+    """
+    Renders the contact page and handles submission of the enquiry form. If form
+    submission is successful, a message is displayed to the user.
+    
+    **Context:**
+        ``GOOGLE_MAPS_KEY``
+            The Google Maps API key for displaying the map.
+        ``enquiry_form``
+            An instance of :form:`enquiries.EnquiryForm` used for submitting an enquiry.
+    
+    **Template:**
+        :template:`enquiries/contact.html`
+    """
     if request.method == "POST":
         enquiry_form = EnquiryForm(data=request.POST)
         if enquiry_form.is_valid():

@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from .models import User
-from .forms import UserProfileForm
 from django.http import Http404, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import User
+from .forms import UserProfileForm
 
 
 # Create your views here.
@@ -13,19 +13,13 @@ def user_profile(request, id):
     Display an individual :model:`users.User`.
 
     **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-    ``comments``
-        All approved comments related to the post.
-    ``comment_count``
-        A count of approved comments related to the post.
-    ``comment_form``
-        An instance of :form:`blog.CommentForm`.
+        ``profile_user``
+            An instance of :model:`users.User`.
+        ``user_profile_form``
+            An instance of :form:`users.UserProfileForm`.
     
     **Template**
-
-    :template:`users/profile.html`
+        :template:`users/profile.html`
     """
     if request.user.id != id:
         raise Http404("User does not have access to this page")
@@ -48,13 +42,8 @@ def user_update(request, id):
     """
     Update details for the given :model:`users.User` in the database
 
-    **Context**
-    ``post``
-        An instance of :model:`blog.Post`
-    ``comment``
-        A single comment related to the post
-    ``comment_form``
-        An instance of :form:`blog.CommentForm`
+    If the request method is not POST or if the user submitting the change
+    is not the owner of the profile, user receives a 404
     """
     
     if request.method == "POST":
@@ -81,13 +70,10 @@ def user_update(request, id):
 @login_required
 def user_delete(request, id):
     """
-    Delete an user
+    Delete a user from the database.
 
-    **Context**
-    ``post``
-        An instance of :model:`blog.Post`
-    ``comment``
-        A single comment related to the post
+    Ensures that the user submitting the action is the user to be deleted.
+    Returns user to the home page with a message to notify success
     """
 
     profile_user = get_object_or_404(User, pk=id)
