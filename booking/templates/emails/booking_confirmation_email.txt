@@ -1,0 +1,11 @@
+Hello{% if user.first_name %} {{ user.first_name }}{% endif %},
+
+Thank you for your booking! Here are your booking details:
+
+{{ service_name }} for {{ booking.dog_name }}
+{{ booking.date }} at {{ booking.time }}
+
+We look forward to seeing you and {{ booking.dog_name }} soon!
+
+Best regards,
+Perfect Paws

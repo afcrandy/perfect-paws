@@ -2,6 +2,8 @@ import json
 from itertools import groupby
 from operator import itemgetter
 from datetime import date
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.shortcuts import render, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -58,6 +60,20 @@ def make_booking(request):
             messages.add_message(
                 request, messages.SUCCESS,
                 f"Your booking has been confirmed: for {booking.dog_name} on {booking.date.strftime('%d-%m-%y')} at {booking.time.strftime('%H:%M')}"
+            )
+
+            email_context = {
+                'booking': booking,
+                'user': booking.client,
+                'service_name': booking.service.name,
+            }
+            email_message = render_to_string('emails/booking_confirmation_email.txt', email_context)
+            send_mail(
+                f"Booking Confirmation: {booking.dog_name}",
+                email_message,
+                'andrew.o.reid@gmail.com',
+                [booking.client.email],
+                fail_silently=False
             )
         else:
             messages.add_message(

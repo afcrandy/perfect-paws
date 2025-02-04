@@ -79,7 +79,7 @@ class Booking(models.Model):
         super().clean()
 
         # determine if the time selected is appropriate for this service type
-        if self.service.appointment_length:
+        if self.service.appointment_length == 'long':
             valid_choices = [
                 '08:30',
                 '11:00',
@@ -98,7 +98,6 @@ class Booking(models.Model):
             ]
         
         if self.time not in [datetime.datetime.strptime(v, '%H:%M').time() for v in valid_choices]:
-            print('failed at this point', self.time, valid_choices)
             raise ValidationError("Invalid time selected for service type")
 
         queryset = Booking.objects.filter(
