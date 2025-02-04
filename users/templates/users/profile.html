@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block pagetitle %}
+    {{ profile_user.full_name }} Profile
+{% endblock pagetitle %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row page-title">
+            <h1>
+                Your profile
+            </h1>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-md-6 offset-md-3 mt-5 col-lg-5 mx-auto">
+            <form action="update_user/" id="user-profile-form" method="post">
+                {% csrf_token %}
+                {{ user_profile_form | crispy }}
+                <button class="btn btn-signup btn-lg btn-primary prussian-blue-bg">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5 col-lg-5 mx-auto">
+            <button class="btn btn-danger btn-lg btn-primary w-100" data-bs-toggle="modal" data-bs-target="#deletion-modal">
+                Delete Account
+            </button>
+        </div>
+    </div>
+    
+      
+    <!-- Modal -->
+    <div class="modal fade" id="deletion-modal" tabindex="-1" aria-labelledby="deletion-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletion-modal-label">Are you sure?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you wish to delete your account? This cannot be undone. If you are sure, click the button below.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <a href="{% url 'delete_user' profile_user.id %}" type="button" class="btn btn-primary btn-danger">
+                        DELETE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

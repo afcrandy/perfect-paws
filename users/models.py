@@ -25,3 +25,9 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+    
+    def full_name(self):
+        if self.first_name != "" and self.last_name != "":
+            return f"{self.first_name} {self.last_name}"
+        else:
+            return self.__str__()
