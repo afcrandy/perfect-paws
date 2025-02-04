@@ -41,7 +41,7 @@ main {
 }
 
 .page-title {
-    padding-top: 60px;
+    padding-top: 56px;
     background-color: var(--mimi-pink);
     
     & h1 {
