@@ -1,2 +1,80 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+{% block pagetitle %}
+    Make booking
+{% endblock pagetitle %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row page-title">
+            <h1>
+                Make a booking
+            </h1>
+        </div>
+
+        <div class="row my-4 navbar-scroll-margin">
+            <div class="col-md-6 offset-md-3 mt-5 col-lg-5 mx-auto">
+                <h4>Pick a service</h4>
+                <form id="service-form" class="d-flex flex-row flex-wrap" action="{% url 'check_availability' %}">
+                    {% for service in services %}
+
+                        <div class="p-1 service-card">
+                            <div class="card service-selector"
+                                 data-service-length="{{ service.appointment_length }}"
+                                 data-service-value="{{ service.id }}">
+                                <img src="{% static 'images/placeholder.jpeg' %}" class="card-img-top" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ service.name }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+
+        <div class="row navbar-scroll-margin d-none" id="dt-form-row">
+            <div class="col-md-6 offset-md-3 mt-5 col-lg-4 offset-lg-4">
+                <h4>Pick a date and time</h4>
+                <form id="date_time_form" action='#'>
+                    {% csrf_token %}
+                    {{ date_time_form | crispy }}
+                </form>
+            </div>
+        </div>
+
+        <div id="dog-info-form-row" class="row navbar-scroll-margin d-none">
+            <div class="col-md-6 offset-md-3 mt-5 col-lg-4 offset-lg-4">
+                <h4>Now tell us about your dog</h4>
+                <form action="#" id="dog-info-form">
+                    {% csrf_token %}
+                    {{ dog_info_form | crispy }}
+                </form>
+            </div>
+        </div>
+        
+        <div class="row my-4 d-none navbar-scroll-margin" id="booking-form-row">
+            <div class="col-md-6 offset-md-3 mt-5 col-lg-4 offset-lg-4">
+                <h4>And lastly</h4>
+                <form action="#" class="booking-form" method="post">
+                    {% csrf_token %}
+                    <div class="d-none">
+                        {{ booking_form | crispy }}
+                    </div>
+                    <button class="btn btn-signup btn-lg btn-primary prussian-blue-bg ms-5 my-3">
+                        Submit booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block extra_scripts %}
+    <script src="{% static 'js/booking_form.js' %}"></script>
+{% endblock extra_scripts %}

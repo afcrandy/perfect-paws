@@ -18,8 +18,13 @@
             </h1>
 
             <p>
-                {% blocktrans %}If you have not created an account yet, then please
-                <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+                {% if redirect_field_value %}
+                    {% blocktrans %}If you have not created an account yet, then please
+                    <a href="{{ signup_url }}?next={{ redirect_field_value }}">sign up</a> first.{% endblocktrans %}
+                {% else %}
+                    {% blocktrans %}If you have not created an account yet, then please
+                    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+                {% endif %}
             </p>
         </div>
 

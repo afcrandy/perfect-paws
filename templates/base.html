@@ -30,7 +30,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- jQuery and jQuery UI -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/base/jquery-ui.min.css" integrity="sha512-TFee0335YRJoyiqz8hA8KV3P0tXa5CpRBSoM0Wnkn7JoJx1kaq1yXL/rb8YFpWXkMOjRcv5txv+C6UluttluCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js" integrity="sha512-MSOo1aY+3pXCOCdGAYoBZ6YGI0aragoQsg1mKKBHXCYPIWxamwOE7Drh+N5CPgGI5SA9IEKJiPjdfqWFWmZtRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
@@ -53,34 +58,34 @@
             <!-- menu items -->
             <div class="collapse navbar-collapse" id="perfect-paws-navbar">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item me-4">
+                    <li class="nav-item me-3">
                         <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}" href="{% url 'home'%}">Home</a>
                     </li>
-                    <li class="nav-item me-4">
+                    <li class="nav-item me-3">
                         <a class="nav-link {% if request.path == services_url %}active" aria-current="page{% endif %}" href="{% url 'services_info' %}">Services</a>
                     </li>
-                    <li class="nav-item me-4">
+                    <li class="nav-item me-3">
                         <a class="nav-link {% if request.path == booking_url %}active" aria-current="page{% endif %}" href="{% url 'booking_form' %}">Book now</a>
                     </li>
-                    <li class="nav-item me-4">
+                    <li class="nav-item me-3">
                         <a class="nav-link {% if request.path == contact_url %}active" aria-current="page{% endif %}" href="{% url 'contact' %}">Contact us</a>
                     </li>
 
                     {% if user.is_authenticated and user.is_superuser %}
-                        <li class="nav-item me-4">
+                        <li class="nav-item me-3">
                             <a class="nav-link" href="{% url 'admin:index'%}">Admin</a>
                         </li>
                     {% endif %}
 
                     {% if not user.is_authenticated %}
-                        <li class="nav-item me-4">
+                        <li class="nav-item me-3">
                             <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}" href="{% url 'account_signup'%}">Register</a>
                         </li>
-                        <li class="nav-item me-4">
+                        <li class="nav-item me-3">
                             <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}" href="{% url 'account_login'%}">Login</a>
                         </li>
                     {% else %}
-                        <li class="nav-item me-4">
+                        <li class="nav-item me-3">
                             <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}" href="{% url 'account_logout'%}">Logout</a>
                         </li>
                     {% endif %}

@@ -20,7 +20,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Libre Baskerville', sans-serif;
 }
 
-
 main {
     padding-bottom: 60px;
 
@@ -66,10 +65,12 @@ main {
     background-color: #ffb3b3;
 }
 
+
 /* Navbar styles */
 nav.navbar {
     background-color: rgba(255, 255, 255, 0.4);
 }
+
 
 /* Home page */
 #hero-text {
@@ -83,7 +84,7 @@ nav.navbar {
     font-family: 'Dogma Script', serif;
     font-size: 100px;
 
-    @media screen and (max-width: 578px) {
+    @media screen and (max-width: 575px) {
         font-size: 65px;
     }
 }
@@ -118,8 +119,8 @@ nav.navbar {
     background-color: var(--prussian-blue);
 }
 #map {
-    height: 400px; /* The height is 400 pixels */
-    width: 100%; /* The width is the width of the web page */
+    height: 400px;
+    width: 100%;
 }
 
 
@@ -130,6 +131,24 @@ nav.navbar {
 .service-container img {
     height: 200px;
     width: 200px;
+}
+
+
+/* Booking form */
+.navbar-scroll-margin {
+    scroll-margin-top: 40px;
+
+    & h4 {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+}
+.service-card {
+    width: 50%;
+
+    @media screen and (max-width: 575px) {
+        width: 100%;
+    }
 }
 
 
