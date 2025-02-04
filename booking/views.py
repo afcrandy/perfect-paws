@@ -22,7 +22,7 @@ def services_info(request):
     **Template:**
     :template:`booking/services_info.html`
     """
-    services = Service.objects.filter(active=True).order_by('-cost')
+    services = Service.objects.filter(active=True).order_by('-duration')
     return render(
         request,
         'booking/services_info.html',
@@ -64,7 +64,7 @@ def make_booking(request):
             )
         return HttpResponseRedirect(reverse('home'))
 
-    services = Service.objects.filter(active=True)
+    services = Service.objects.filter(active=True).order_by('-duration')
     booking_form = BookingForm()
     date_time_form = BookingDateTimeForm()
     dog_info_form = BookingDogInfoForm()
