@@ -21,6 +21,7 @@ class Service(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    @property
     def appointment_length(self):
         return "long" if self.duration > 60 else "short"
 
@@ -76,14 +77,38 @@ class Booking(models.Model):
 
     def clean(self):
         super().clean()
+
+        # determine if the time selected is appropriate for this service type
+        if self.service.appointment_length:
+            valid_choices = [
+                '08:30',
+                '11:00',
+                '13:30',
+                '14:00',
+            ]
+        else:
+            valid_choices = [
+                '09:00',
+                '10:00',
+                '11:00',
+                '12:00',
+                '14:00',
+                '15:00',
+                '16:00',
+            ]
+        
+        if self.time not in [datetime.datetime.strptime(v, '%H:%M').time() for v in valid_choices]:
+            print('failed at this point', self.time, valid_choices)
+            raise ValidationError("Invalid time selected for service type")
+
         queryset = Booking.objects.filter(
             date=self.date,
             time=self.time,
-            canceled=False
+            canceled=False,
         )
 
         if queryset.exists():
-            if self.service.appointment_length() in [b.service.appointment_length() for b in queryset]:
+            if self.service.appointment_length in [b.service.appointment_length for b in queryset if b.service.active]:
                 raise ValidationError("Cannot create booking, that timeslot is already booked")
         
         if self.date.weekday in [0, 6]:

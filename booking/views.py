@@ -56,7 +56,8 @@ def make_booking(request):
             booking.client = request.user
             booking.save()
             messages.add_message(
-                request, messages.SUCCESS, 'Your booking has been confirmed'
+                request, messages.SUCCESS,
+                f"Your booking has been confirmed: for {booking.dog_name} on {booking.date.strftime('%d-%m-%y')} at {booking.time.strftime('%H:%M')}"
             )
         else:
             messages.add_message(
