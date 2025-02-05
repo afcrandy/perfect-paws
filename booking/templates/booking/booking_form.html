@@ -25,7 +25,7 @@
                             <div class="card service-selector"
                                  data-service-length="{{ service.appointment_length }}"
                                  data-service-value="{{ service.id }}">
-                                <img src="{% if 'placeholder' in service.image.url %}{% static 'images/placeholder.jpeg' %}{% else %}{{ service.image.url | add:'?w=300&h=300&crop=limit' }}{% endif %}" class="card-img-top" alt="">
+                                <img src="{% if 'placeholder' in service.image.url %}{% static 'images/placeholder.png' %}{% else %}{{ service.image.url | add:'?w=300&h=300&crop=limit' }}{% endif %}" class="card-img-top" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ service.name }}</h5>
                                 </div>
