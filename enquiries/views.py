@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from .forms import EnquiryForm
 
 
@@ -26,6 +27,7 @@ def contact_page(request):
             messages.add_message(
                 request, messages.SUCCESS, "Your enquiry has been successfully sent"
             )
+        return HttpResponseRedirect(reverse('contact'))
     
     enquiry_form = EnquiryForm()
     

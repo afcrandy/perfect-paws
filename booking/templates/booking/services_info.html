@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-4 d-flex flex-row justify-content-around align-items-center">
                                 <img
-                                    src="{% if 'placeholder' in service.image.url %}{% static 'images/placeholder.jpeg' %}{% else %}{{ service.image.url | add:'?w=300&h=300&crop=limit' }}{% endif %}" 
+                                    src="{% if 'placeholder' in service.image.url %}{% static 'images/placeholder.jpeg' %}{% else %}{{ service.image.secureurl | add:'?w=300&h=300&crop=limit' }}{% endif %}" 
                                     class="img-fluid rounded-end m-3" alt="{{ service.name }}">
                             </div>
                         </div>

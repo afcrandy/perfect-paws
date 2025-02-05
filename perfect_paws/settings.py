@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import sys
+import warnings
 from django.contrib.messages import constants as messages
+from django.middleware.security import SecurityMiddleware
 import dj_database_url
 
 
@@ -201,6 +203,12 @@ MESSAGE_TAGS = {
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# to silence the "warnings.warn(u"No directory at: {}".format(root))" from WhiteNoise during testing
+# this is caused by the lack of a 'staticfiles' dir at STATIC_ROOT defined above
+# but removing that setting causes a different more problematic error. So this is where we are.
+if 'test' in sys.argv:
+    warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
