@@ -27,6 +27,9 @@ def services_info(request):
         :template:`booking/services_info.html`
     """
     services = Service.objects.filter(active=True).order_by('-duration')
+    # force HTTPS requests for Cloudinary-based images
+    for service in services:
+        service.image.url_options.update({'secure':True})
     return render(
         request,
         'booking/services_info.html',
@@ -89,6 +92,9 @@ def make_booking(request):
         return HttpResponseRedirect(reverse('home'))
 
     services = Service.objects.filter(active=True).order_by('-duration')
+    # force HTTPS requests for Cloudinary-based images
+    for service in services:
+        service.image.url_options.update({'secure':True})
     booking_form = BookingForm()
     date_time_form = BookingDateTimeForm()
     dog_info_form = BookingDogInfoForm()
