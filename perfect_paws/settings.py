@@ -214,3 +214,6 @@ if 'test' in sys.argv:
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# allow amiresponsive to see the site
+X_FRAME_OPTIONS = "ALLOWALL"
